@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-SONAR_SCANNER_VERSION="3.0.3.778"
-SONAR_RUNNER_HOME="/sonarscanner"
+#SONAR_SCANNER_VERSION="3.0.3.778"
+#SONAR_RUNNER_HOME="/sonarscanner"
 
 if [[ ! -e "${SONAR_RUNNER_HOME}/sonar-scanner-${SONAR_SCANNER_VERSION}" ]]; then
 
@@ -18,6 +18,6 @@ if [[ ! -e "${SONAR_RUNNER_HOME}/sonar-scanner-${SONAR_SCANNER_VERSION}" ]]; the
 
     ln -nvfs $(realpath "${SONAR_RUNNER_HOME}/sonar-scanner-${SONAR_SCANNER_VERSION}") ${SONAR_RUNNER_HOME}/default
 
-    export PATH=$PATH:"${SONAR_RUNNER_HOME}"/default/bin
+    export PATH=$PATH:"${SONAR_RUNNER_HOME}/default/bin"
 
 fi

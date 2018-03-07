@@ -1,9 +1,9 @@
 # Sonar Scanner
 
-[![dockeri.co](http://dockeri.co/image/_/sonar-scanner)](https://registry.hub.docker.com/_/sonar-scanner/)
+[![dockeri.co](http://dockeri.co/image/_/ismaelqueiroz/sonar-scanner)](https://registry.hub.docker.com/_/ismaelqueiroz/sonar-scanner/)
 
-[![GitHub issues](https://img.shields.io/github/issues/ismaelqueiroz/docker-sonar-scanner.svg "GitHub issues")](https://github.com/sonar-scanner/docker-sonar-scanner)
-[![GitHub stars](https://img.shields.io/github/stars/ismaelqueiroz/docker-sonar-scanner.svg "GitHub stars")](https://github.com/sonar-scanner/docker-sonar-scanner)
+[![GitHub issues](https://img.shields.io/github/issues/ismaelqueiroz/docker-sonar-scanner.svg "GitHub issues")](https://github.com/ismaelqueiroz/docker-sonar-scanner)
+[![GitHub stars](https://img.shields.io/github/stars/ismaelqueiroz/docker-sonar-scanner.svg "GitHub stars")](https://github.com/ismaelqueiroz/docker-sonar-scanner)
 
 The unofficial image of the Sonar Scanner, made with love by the community.
 
@@ -21,18 +21,14 @@ The unofficial image of the Sonar Scanner, made with love by the community.
 - [Image Variants](#image-variants)
   - [`sonar-scanner:<version>`](#sonar-scannerversion)
   - [`sonar-scanner:alpine`](#sonar-scanneralpine)
-  - [`sonar-scanner:onbuild`](#sonar-scanneronbuild)
-  - [`sonar-scanner:slim`](#sonar-scannerslim)
 - [License](#license)
 - [Supported Docker versions](#supported-docker-versions)
-- [Governance and Current Members](#governance-and-current-members)
-  - [Docker Working Group Members](#docker-working-group-members)
-  - [Docker Working Group Collaborators](#docker-working-group-collaborators)
+
 
 # Supported tags and respective `Dockerfile` links
 
 -	[`3.0.3`, `3.0.3.778`, `latest` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.3.778/Dockerfile)
--	[`3.0.0` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.0/Dockerfile)
+-	[`3.0.0`, `3.0.0.702` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.0.702/Dockerfile)
 
 
 ## What is Sonar Scanner?
@@ -47,17 +43,32 @@ See: http://ismaelqueiroz.github.io
 
 ```dockerfile
 # specify the sonar-scanner base image with your desired version sonar-scanner:<version>
-FROM sonar-scanner:6
+FROM ismaelqueiroz/sonar-scanner:3.0.3.778
 ```
 
-You can then build and run the Docker image:
+You can then run the Docker image:
 
 ```console
-$ docker build -t my-sonar-scanner-app .
-$ docker run -it --rm --name my-running-app my-sonar-scanner-app
+$ docker run --rm ismaelqueiroz/sonar-scanner sonar-scanner -v
 ```
 
 Just replace YOUR-SONAR-SERVER with the IP-Address of your Sonar-Server of your choice.
+
+## Environment variables
+
+When you start the sonar-scanner image, you can adjust the configuration of the instance by passing one or more environment variables either on the docker run command line. If you want to add a new environment variable:
+
+ * Execution add a `-e` option with each variable and value:
+
+```console
+ $ docker run --rm ismaelqueiroz/sonar-scanner \
+     -e SONAR_SCANNER_VERSION=3.0.0.702 \
+     /bin/sh -c "update; sonar-scanner -v"
+```
+
+Available variables:
+ - `SONAR_RUNNER_HOME`: Sonar Scanner home. Default: **/sonarscanner**
+ - `SONAR_SCANNER_VERSION`: Sonar Scanner version. Default: **3.0.3.778**
 
 # License
 
