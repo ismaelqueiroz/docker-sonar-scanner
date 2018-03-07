@@ -4,7 +4,7 @@ LABEL maintainer="Ismael Queiroz <ismaelqueiroz@gmail.com>"
 
 ENV NODE_VERSION 9.7.1
 ENV SONAR_SCANNER_VERSION 3.0.3
-ENV SONAR_RUNNER_HOME sonarscanner
+ENV SONAR_RUNNER_HOME "/sonarscanner"
 
 RUN apk add --update curl
 

@@ -20,4 +20,6 @@ if [[ ! -e "${SONAR_RUNNER_HOME}/sonar-scanner-${SONAR_SCANNER_VERSION}" ]]; the
 
     export PATH=$PATH:"${SONAR_RUNNER_HOME}/default/bin"
 
+    chown -R node:node ${SONAR_RUNNER_HOME}
+
 fi
