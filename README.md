@@ -9,7 +9,7 @@ The unofficial image of the Sonar Scanner, made with love by the community.
 
 ## Table of Contents
 
-  - [What is Sonar Scanner?](#what-is-sonar-scanner)
+  - [What is Sonar scanner?](#what-is-sonar-scanner)
 - [How to use this image](#how-to-use-this-image)
   - [Create a `Dockerfile` in your app project](#create-a-dockerfile-in-your-app-project)
   - [Best Practices](#best-practices)
