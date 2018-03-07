@@ -7,8 +7,8 @@ ENV SONAR_SCANNER_VERSION 3.0.3.778
 ENV SONAR_RUNNER_HOME "/sonarscanner"
 
 RUN set -x
-RUN apk add --update curl
-RUN apk add --update openjdk8
+RUN apk add --update --no-cache curl
+RUN apk add --update --no-cache openjdk8
 
 COPY docker-entrypoint.sh /usr/local/bin/
 

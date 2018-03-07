@@ -1,7 +1,4 @@
 # Sonar Scanner
-
-[![dockeri.co](http://dockeri.co/image/_/ismaelqueiroz/sonar-scanner)](https://registry.hub.docker.com/_/ismaelqueiroz/sonar-scanner/)
-
 [![GitHub issues](https://img.shields.io/github/issues/ismaelqueiroz/docker-sonar-scanner.svg "GitHub issues")](https://github.com/ismaelqueiroz/docker-sonar-scanner)
 [![GitHub stars](https://img.shields.io/github/stars/ismaelqueiroz/docker-sonar-scanner.svg "GitHub stars")](https://github.com/ismaelqueiroz/docker-sonar-scanner)
 
@@ -41,8 +38,9 @@ See: http://ismaelqueiroz.github.io
 
 ## Create a `Dockerfile` in your Sonar Scanner app project
 
-```dockerfile
 # specify the sonar-scanner base image with your desired version sonar-scanner:<version>
+
+```dockerfile
 FROM ismaelqueiroz/sonar-scanner:3.0.3.778
 ```
 
