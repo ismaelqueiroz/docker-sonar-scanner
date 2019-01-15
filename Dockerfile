@@ -12,7 +12,7 @@ ENV PATH $PATH:$SONAR_SCANNER_HOME/bin
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     curl --insecure -o /tmp/sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip && \
-	unzip /tmp/sonarscanner.zip -d /opt && mv /opt/${SONAR_SCANNER_VERSION} /opt/sonar-scanner && \
+	unzip /tmp/sonarscanner.zip -d /opt && mv /opt/sonar-scanner-${SONAR_SCANNER_VERSION} /opt/sonar-scanner && \
 	rm /tmp/sonarscanner.zip
 
 #   ensure Sonar uses the provided Java for musl instead of a borked glibc one
