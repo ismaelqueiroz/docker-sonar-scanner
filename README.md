@@ -7,6 +7,7 @@ The unofficial image of the Sonar Scanner, made with love by the community.
 ## Table of Contents
 
   - [What is Sonar scanner?](#what-is-sonar-scanner)
+ 
 - [How to use this image](#how-to-use-this-image)
   - [Create a `Dockerfile` in your app project](#create-a-dockerfile-in-your-app-project)
   - [Best Practices](#best-practices)
@@ -14,7 +15,6 @@ The unofficial image of the Sonar Scanner, made with love by the community.
   - [Verbosity](#verbosity)
     - [Dockerfile](#dockerfile)
     - [Docker Run](#docker-run)
-    - [NPM run](#npm-run)
 - [Image Variants](#image-variants)
   - [`sonar-scanner:<version>`](#sonar-scannerversion)
   - [`sonar-scanner:alpine`](#sonar-scanneralpine)
@@ -24,8 +24,9 @@ The unofficial image of the Sonar Scanner, made with love by the community.
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.0.3`, `3.0.3.778`, `latest` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.3.778/Dockerfile)
--	[`3.0.0`, `3.0.0.702` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.0.702/Dockerfile)
+-	[`3.3.0.1492`, `alpine` `latest` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.3.0.1492/Dockerfile)
+-	[`3.0.3.778` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.3.778/Dockerfile)
+-	[`3.0.0.702` (*Dockerfile*)](https://github.com/ismaelqueiroz/docker-sonar-scanner/blob/master/3.0.0.702/Dockerfile)
 
 
 ## What is Sonar Scanner?
@@ -41,7 +42,7 @@ See: http://ismaelqueiroz.github.io
 # specify the sonar-scanner base image with your desired version sonar-scanner:<version>
 
 ```dockerfile
-FROM ismaelqueiroz/sonar-scanner:3.0.3.778
+FROM ismaelqueiroz/sonar-scanner
 ```
 
 You can then run the Docker image:
@@ -60,13 +61,13 @@ When you start the sonar-scanner image, you can adjust the configuration of the 
 
 ```console
  $ docker run --rm ismaelqueiroz/sonar-scanner \
-     -e SONAR_SCANNER_VERSION=3.0.0.702 \
+     -e SONAR_SCANNER_VERSION=3.3.0.1492 \
      /bin/sh -c "update; sonar-scanner -v"
 ```
 
 Available variables:
- - `SONAR_RUNNER_HOME`: Sonar Scanner home. Default: **/sonarscanner**
- - `SONAR_SCANNER_VERSION`: Sonar Scanner version. Default: **3.0.3.778**
+ - `SONAR_SCANNER_HOME`: Sonar Scanner home. Default: **/sonarscanner**
+ - `SONAR_SCANNER_VERSION`: Sonar Scanner version. Default: **3.3.0.1492**
 
 # License
 

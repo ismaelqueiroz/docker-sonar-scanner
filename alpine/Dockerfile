@@ -6,7 +6,7 @@ RUN set -x && apk add --update --no-cache curl openjdk8 grep sed unzip bash
 
 # Settings
 ENV TZ=America/Sao_Paulo
-ARG SONAR_SCANNER_VERSION="3.0.0.702"
+ARG SONAR_SCANNER_VERSION="3.3.0.1492"
 ENV SONAR_SCANNER_HOME=/opt/sonar-scanner
 ENV PATH $PATH:$SONAR_SCANNER_HOME/bin
 
