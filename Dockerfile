@@ -2,21 +2,21 @@ FROM node:alpine
 
 LABEL maintainer="Ismael Queiroz <ismaelqueiroz@gmail.com>"
 
-ENV SONAR_SCANNER_VERSION 3.0.3.778
-ENV SONAR_RUNNER_HOME "/sonarscanner"
+RUN set -x && apk add --update --no-cache curl openjdk8 grep sed unzip bash
 
-RUN set -x
-RUN apk add --update --no-cache curl
-RUN apk add --update --no-cache openjdk8
+# Settings
+ENV TZ=America/Sao_Paulo
+ARG SONAR_SCANNER_VERSION="3.3.0.1492"
+ENV SONAR_SCANNER_HOME=/opt/sonar-scanner
+ENV PATH $PATH:$SONAR_SCANNER_HOME/bin
 
-COPY docker-entrypoint.sh /usr/local/bin/
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    curl --insecure -o /tmp/sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip && \
+	unzip /tmp/sonarscanner.zip -d /opt && mv /opt/${SONAR_SCANNER_VERSION} /opt/sonar-scanner && \
+	rm /tmp/sonarscanner.zip
 
-RUN ln -s /usr/local/bin/docker-entrypoint.sh /usr/local/bin/update
+#   ensure Sonar uses the provided Java for musl instead of a borked glibc one
+RUN sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' $SONAR_SCANNER_HOME/bin/sonar-scanner
 
-RUN chmod +x /usr/local/bin/update
-
-RUN update
-
-ENV PATH $PATH:"${SONAR_RUNNER_HOME}/default/bin"
-
-CMD [ "sonar-scanner" ]
+# Use bash if you want to run the environment from inside the shell, otherwise use the command that actually runs the underlying stuff
+CMD ["sonar-scanner", "-Dsonar.projectBaseDir=."]
